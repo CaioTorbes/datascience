@@ -51,9 +51,9 @@ is_balanced = class_counts.min() / class_counts.max() > 0.5
 print(f"A base está balanceada? {'Sim' if is_balanced else 'Não'}")
 
 models = {
-    'Logistic Regression': LogisticRegression(max_iter=1000),
+   'Regressão Logística': LogisticRegression(max_iter=1000),
     'Random Forest': RandomForestClassifier(),
-    'Decision Tree': DecisionTreeClassifier(),
+    'Árvore de decisão': DecisionTreeClassifier(),
     'Rede Neural': MLPClassifier(max_iter=1000)
 }
 
@@ -75,19 +75,19 @@ results = {}
 for name, model in models.items():
     accuracy, precision, recall, f1 = train_and_evaluate(model, x_train, y_train, x_test, y_test)
     results[name] = {
-        'accuracy': accuracy,
-        'precision': precision,
-        'recall': recall,
-        'f1_score': f1
+        'Acurácia': accuracy,
+        'Precisão': precision,
+        'Recall': recall,
+        'F1-score': f1
     }
 
 # Imprimir resultados
 for name, metrics in results.items():
-    print(f"Model: {name}")
+    print(f"Modelo: {name}")
     for metric, value in metrics.items():
         print(f"  {metric}: {value}")
     print()
 
 # Escolha do melhor modelo com base nas métricas
-best_model = max(results, key=lambda x: results[x]['f1_score'])
+best_model = max(results, key=lambda x: results[x]['F1-score'])
 print(f"O melhor modelo para operação é: {best_model}")
